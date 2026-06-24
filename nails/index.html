@@ -1,0 +1,3676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelxbygrace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&family=Playfair+Display:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blush-pink: #E8D4D8;
+            --soft-pink: #F5E6E8;
+            --beige: #D4C4B0;
+            --vanilla-white: #FAF7F2;
+            --matcha-green: #A8B5A0;
+            --warm-charcoal: #3A3A3A;
+            --soft-brown: #5C5C5C;
+            --luxury-white: #FFFFFF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--vanilla-white);
+            color: var(--warm-charcoal);
+        }
+
+/* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 25px 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            transition: background-color 0.4s ease-in-out;
+        }
+
+        .navbar-logo-link {
+            position: absolute;
+            left: 60px;
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: var(--luxury-white);
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: color 0.4s ease-in-out;
+            display: none; /* Hidden on home page */
+        }
+
+        /* Show logo when viewing other pages */
+        body:has(#schedule:target) .navbar-logo-link,
+        body:has(#services:target) .navbar-logo-link,
+        body:has(#portfolio-section:target) .navbar-logo-link,
+        body:has(#policy:target) .navbar-logo-link {
+            display: block;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 60px;
+        }
+
+.navbar.scrolled .navbar-logo-link {
+            color: var(--warm-charcoal);
+        }
+
+        .navbar.scrolled .navbar-menu li a {
+            color: var(--warm-charcoal);
+        }
+
+        .navbar.scrolled .nav-book-btn {
+            border-color: var(--warm-charcoal);
+            color: var(--warm-charcoal);
+        }
+
+.navbar.scrolled .cart-icon svg {
+            color: var(--warm-charcoal);
+        }
+
+        .navbar-menu {
+            position: relative;
+            left: auto;
+            display: flex;
+            list-style: none;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .navbar-menu li a {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--luxury-white);
+            text-decoration: none;
+            transition: color 0.4s ease-in-out;
+        }
+
+        .nav-book-btn {
+            position: absolute;
+            right: 60px;
+            padding: 14px 35px;
+            border: 1px solid var(--luxury-white);
+            background: transparent;
+            color: var(--luxury-white);
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.4s ease-in-out;
+        }
+
+        /* Dark navbar when viewing other pages */
+        body:has(#schedule:target) .navbar,
+        body:has(#services:target) .navbar,
+        body:has(#portfolio-section:target) .navbar,
+        body:has(#policy:target) .navbar {
+            background: var(--warm-charcoal);
+        }
+
+        body:has(#schedule:target) .navbar-logo-link,
+        body:has(#services:target) .navbar-logo-link,
+        body:has(#portfolio-section:target) .navbar-logo-link,
+        body:has(#policy:target) .navbar-logo-link {
+            color: var(--luxury-white);
+        }
+
+        body:has(#schedule:target) .navbar-menu li a,
+        body:has(#services:target) .navbar-menu li a,
+        body:has(#portfolio-section:target) .navbar-menu li a,
+        body:has(#policy:target) .navbar-menu li a {
+            color: var(--luxury-white);
+        }
+
+        body:has(#schedule:target) .nav-book-btn,
+        body:has(#services:target) .nav-book-btn,
+        body:has(#portfolio-section:target) .nav-book-btn,
+        body:has(#policy:target) .nav-book-btn {
+            border-color: var(--luxury-white);
+            color: var(--luxury-white);
+        }
+
+        body:has(#schedule:target) .cart-icon svg,
+        body:has(#services:target) .cart-icon svg,
+        body:has(#portfolio-section:target) .cart-icon svg,
+        body:has(#policy:target) .cart-icon svg {
+            color: var(--luxury-white);
+        }
+
+        .navbar:hover {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(1px);
+        }
+
+        .navbar:hover .navbar-logo-link {
+            color: var(--luxury-white);
+        }
+
+        .navbar:hover .navbar-menu li a {
+            color: var(--luxury-white);
+        }
+
+        .navbar:hover .nav-book-btn {
+            border-color: var(--warm-charcoal);
+            color: var(--warm-charcoal);
+        }
+
+        .navbar:hover .cart-icon svg {
+            color: var(--warm-charcoal);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 300;
+            letter-spacing: 15px;
+            color: var(--luxury-white);
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .hero-btn {
+            padding: 18px 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .hero-btn-outline {
+            background: transparent;
+            border: 1px solid var(--luxury-white);
+            color: var(--luxury-white);
+        }
+
+        .hero-btn-fill {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            color: var(--warm-charcoal);
+        }
+
+        /* About Section - Business Hours */
+        .about {
+            padding: 80px 60px;
+            background: var(--vanilla-white);
+            text-align: center;
+        }
+
+        .about .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: var(--matcha-green);
+            margin-bottom: 30px;
+            margin-top: 30px;
+            text-transform: uppercase;
+        }
+
+        .about .section-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--matcha-green);
+            margin-bottom: 25px;
+            font-style: italic;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        .hours-card {
+            max-width: 450px;
+            margin: 0 auto;
+            background: var(--luxury-white);
+            border-radius: 16px;
+            padding: 25px 30px;
+            box-shadow: 0 6px 25px rgba(168, 181, 160, 0.12);
+            border: 2px solid var(--matcha-green);
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+        }
+
+        .hours-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(168, 181, 160, 0.2);
+        }
+
+        .hours-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: var(--matcha-green);
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .hours-card-list {
+            list-style: none;
+        }
+
+        .hours-card-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(168, 181, 160, 0.25);
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 300;
+            color: var(--warm-charcoal);
+            letter-spacing: 0.5px;
+        }
+
+        .hours-card-item:last-child {
+            border-bottom: none;
+        }
+
+        .hours-card-day {
+            font-weight: 400;
+            color: var(--matcha-green);
+        }
+
+        .hours-card-time {
+            font-weight: 300;
+        }
+
+        .about-book-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 16px 40px;
+            background: var(--matcha-green);
+            border: 2px solid var(--matcha-green);
+            color: var(--luxury-white);
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .about-book-btn:hover {
+            background: transparent;
+            border-color: var(--matcha-green);
+            color: var(--matcha-green);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(168, 181, 160, 0.3);
+        }
+
+        .about-book-info {
+            margin-top: 20px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--soft-brown);
+            letter-spacing: 1px;
+            font-style: italic;
+        }
+
+    /* Portfolio Section */
+        .portfolio {
+            padding: 150px 60px;
+            background: var(--vanilla-white);
+        }
+
+        .portfolio-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: var(--warm-charcoal);
+            text-align: center;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .portfolio-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--soft-brown);
+            font-style: italic;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-bottom: 60px;
+            opacity: 0.9;
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .instagram-post {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-bottom: 0;
+            border-radius: 15px;
+            overflow: hidden;
+            background: var(--luxury-white);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .instagram-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+        }
+
+        .instagram-image-container {
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .instagram-image-container img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            display: block;
+            margin: 0;
+        }
+
+        .instagram-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            color: var(--warm-charcoal);
+            text-align: center;
+            padding: 18px 10px;
+            margin: 0;
+            background: var(--luxury-white);
+            border: none;
+            box-shadow: none;
+        }
+
+        /* Instagram CTA Container */
+        .instagram-cta {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .instagram-cta-container {
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: linear-gradient(135deg, var(--matcha-green) 0%, #8fa590 100%);
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .instagram-cta-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+        }
+
+        .instagram-cta-content {
+            text-align: center;
+            color: var(--luxury-white);
+            padding: 20px;
+        }
+
+        .instagram-cta-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .instagram-cta-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .instagram-cta-subtext {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        /* Responsive for Portfolio */
+        @media (max-width: 1024px) {
+            .instagram-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+                max-width: 700px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .portfolio {
+                padding: 100px 25px;
+            }
+
+            .portfolio-title {
+                font-size: 32px;
+                letter-spacing: 2px;
+            }
+
+            .portfolio-subtitle {
+                font-size: 18px;
+                margin-bottom: 40px;
+            }
+
+            .instagram-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                max-width: 450px;
+            }
+
+            .instagram-post {
+                border-radius: 15px;
+            }
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 150px 60px;
+            background: var(--matcha-green);
+            text-align: center;
+        }
+
+        .contact .section-title {
+            color: var(--luxury-white);
+        }
+
+        .contact-info {
+            max-width: 600px;
+            margin: 60px auto 0;
+        }
+
+        .contact-item {
+            margin-bottom: 30px;
+        }
+
+        .contact-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--luxury-white);
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+
+        .contact-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 400;
+            color: var(--luxury-white);
+            letter-spacing: 1px;
+        }
+
+        .contact-btn {
+            margin-top: 60px;
+            padding: 20px 60px;
+            background: transparent;
+            border: 1px solid var(--luxury-white);
+            color: var(--luxury-white);
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 50px 60px;
+            background: var(--warm-charcoal);
+            text-align: center;
+        }
+
+        .footer-contact-inline {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+        }
+
+        .footer-contact-inline span {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            color: var(--luxury-white);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .footer-contact-inline a {
+            color: var(--luxury-white);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-contact-inline a:hover {
+            opacity: 0.7;
+        }
+
+        .footer-contact-inline .separator {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 10px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .footer-social a svg {
+            width: 20px;
+            height: 20px;
+            color: var(--luxury-white);
+        }
+
+        .footer-copyright {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                padding: 40px 30px;
+            }
+            .footer-contact-inline {
+                gap: 15px;
+            }
+            .footer-contact-inline span {
+                font-size: 10px;
+                letter-spacing: 1px;
+            }
+            .footer-social {
+                gap: 15px;
+            }
+            .footer-social a {
+                width: 40px;
+                height: 40px;
+            }
+            .footer-social a svg {
+                width: 18px;
+                height: 18px;
+            }
+            .footer-copyright {
+                font-size: 9px;
+                letter-spacing: 1.5px;
+            }
+        }
+
+        /* Policy Section */
+        .policy {
+            padding: 100px 60px;
+            background: #F5EBED;
+        }
+
+        .policy-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: var(--warm-charcoal);
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        .policy-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .policy-item {
+            text-align: center;
+            padding: 35px 25px;
+            background: var(--luxury-white);
+            border-radius: 16px;
+            box-shadow: 0 4px 25px rgba(221, 194, 196, 0.4);
+            border: 1px solid rgba(221, 194, 196, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .policy-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(221, 194, 196, 0.5);
+        }
+
+        .policy-item-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #9E8587;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .policy-item-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.8;
+            color: #777777;
+            letter-spacing: 0.5px;
+            font-style: italic;
+        }
+
+        @media (max-width: 1024px) {
+            .policy-content {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 700px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .policy {
+                padding: 80px 25px;
+            }
+            .policy-title {
+                font-size: 32px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+            .policy-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .policy-item {
+                padding: 25px;
+            }
+            .policy-item-title {
+                font-size: 16px;
+            }
+            .policy-item-text {
+                font-size: 14px;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-brand {
+                font-size: 52px;
+                letter-spacing: 10px;
+            }
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 30px;
+            }
+            .navbar-menu {
+                display: none;
+            }
+            .hero-brand {
+                font-size: 36px;
+                letter-spacing: 6px;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero-btn {
+                padding: 15px 40px;
+            }
+            .about, .services, .portfolio, .contact, .info-section {
+                padding: 80px 30px;
+            }
+            .section-subtitle {
+                font-size: 100px;
+                padding: 35px 30px ;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .info-card {
+                padding: 35px 30px;
+            }
+            .info-card-title {
+                font-size: 24px;
+            }
+        }
+
+        /* Service Selection in Modal */
+        .booking-service-grid {
+            margin-bottom: 25px;
+        }
+
+        .booking-service-selection-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: var(--warm-charcoal);
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .booking-services-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .booking-service-card {
+            background: var(--soft-pink);
+            border: 2px solid transparent;
+            border-radius: 10px;
+            padding: 15px 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .booking-service-card:hover {
+            background: var(--matcha-green);
+            border-color: var(--matcha-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(168, 181, 160, 0.3);
+        }
+
+        .booking-service-card:hover .booking-service-card-name,
+        .booking-service-card:hover .booking-service-card-price {
+            color: var(--luxury-white);
+        }
+
+        .booking-service-card.selected {
+            background: var(--matcha-green);
+            border-color: var(--matcha-green);
+        }
+
+        .booking-service-card.selected .booking-service-card-name,
+        .booking-service-card.selected .booking-service-card-price {
+            color: var(--luxury-white);
+        }
+
+        .booking-service-card-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--warm-charcoal);
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .booking-service-card-price {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--matcha-green);
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .booking-change-service-btn {
+            margin-top: 15px;
+            padding: 8px 20px;
+            background: transparent;
+            border: 1px solid var(--warm-charcoal);
+            color: var(--warm-charcoal);
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .booking-change-service-btn:hover {
+            background: var(--warm-charcoal);
+            color: var(--luxury-white);
+        }
+
+        @media (max-width: 500px) {
+            .booking-services-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Contact Modal */
+        .contact-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-modal-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .contact-modal {
+            background: var(--luxury-white);
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-modal-overlay.show .contact-modal {
+            transform: scale(1);
+        }
+
+        .contact-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 30px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: var(--warm-charcoal);
+            text-transform: uppercase;
+        }
+
+        .contact-modal-close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--soft-brown);
+            transition: color 0.3s ease;
+            line-height: 1;
+        }
+
+        .contact-modal-close:hover {
+            color: var(--warm-charcoal);
+        }
+
+        .contact-modal-body {
+            padding: 30px;
+        }
+
+        .contact-form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form-label {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--soft-brown);
+            margin-bottom: 10px;
+        }
+
+        .contact-form-input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: var(--warm-charcoal);
+            background: var(--luxury-white);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            resize: vertical;
+        }
+
+        .contact-form-input:focus {
+            outline: none;
+            border-color: var(--matcha-green);
+            box-shadow: 0 0 0 3px rgba(168, 181, 160, 0.2);
+        }
+
+        .contact-form-input::placeholder {
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        .contact-submit-btn {
+            width: 100%;
+            padding: 16px 30px;
+            background: var(--matcha-green);
+            border: 2px solid var(--matcha-green);
+            color: var(--luxury-white);
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .contact-submit-btn:hover {
+            background: transparent;
+            border-color: var(--matcha-green);
+            color: var(--matcha-green);
+        }
+
+        /* Cart/Bag Icon */
+.cart-icon {
+            position: absolute;
+            right: 120px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--luxury-white);
+            transition: color 0.3s ease;
+        }
+
+        .navbar.scrolled .cart-icon svg,
+        .navbar:hover .cart-icon svg {
+            color: var(--warm-charcoal);
+        }
+
+.cart-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--matcha-green);
+            color: var(--luxury-white);
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .cart-badge.pulse {
+            transform: scale(1.3);
+        }
+
+        /* Cart Panel */
+        .cart-panel-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2500;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .cart-panel-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            max-width: 90vw;
+            height: 100vh;
+            background: var(--luxury-white);
+            z-index: 2501;
+            display: flex;
+            flex-direction: column;
+            transition: right 0.4s ease;
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cart-panel-overlay.show .cart-panel {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 30px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background: var(--matcha-green);
+        }
+
+        .cart-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: var(--luxury-white);
+            text-transform: uppercase;
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--luxury-white);
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .cart-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--soft-brown);
+        }
+
+        .cart-empty-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+
+        .cart-empty-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-style: italic;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: var(--soft-pink);
+            border-radius: 10px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .cart-item:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--warm-charcoal);
+            margin-bottom: 4px;
+            letter-spacing: 1px;
+        }
+
+        .cart-item-price {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--matcha-green);
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: var(--soft-brown);
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .cart-item-remove:hover {
+            color: #c00;
+        }
+
+        .cart-footer {
+            padding: 25px 30px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            background: var(--vanilla-white);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .cart-total-label {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--warm-charcoal);
+            letter-spacing: 1px;
+        }
+
+        .cart-total-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 500;
+            color: var(--matcha-green);
+        }
+
+        .cart-checkout-btn {
+            width: 100%;
+            padding: 16px 30px;
+            background: var(--matcha-green);
+            border: 2px solid var(--matcha-green);
+            color: var(--luxury-white);
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .cart-checkout-btn:hover {
+            background: transparent;
+            border-color: var(--matcha-green);
+            color: var(--matcha-green);
+        }
+
+        .cart-clear-btn {
+            width: 100%;
+            padding: 12px 30px;
+            background: transparent;
+            border: 1px solid var(--soft-brown);
+            color: var(--soft-brown);
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .cart-clear-btn:hover {
+            background: var(--soft-brown);
+            color: var(--luxury-white);
+        }
+
+        /* Booking Cart Items in Modal */
+        .booking-cart-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .booking-cart-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: var(--warm-charcoal);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .booking-cart-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            font-style: italic;
+            color: var(--soft-brown);
+        }
+
+        .booking-cart-list {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .booking-cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            background: transparent;
+            border-radius: 0;
+            margin-bottom: 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        /* Dropdown list for adding more services */
+        .booking-cart-dropdown {
+            display: none;
+            position: absolute;
+            left: 0;
+            right: 0;
+            background: var(--luxury-white);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 100;
+            margin-top: 5px;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .booking-cart-dropdown-list {
+            padding: 8px;
+        }
+
+        .booking-cart-dropdown-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .booking-cart-dropdown-item:hover {
+            background: var(--soft-pink);
+        }
+
+        .booking-cart-dropdown-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--warm-charcoal);
+        }
+
+        .booking-cart-dropdown-price {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--matcha-green);
+        }
+
+        .booking-cart-item-info {
+            flex: 1;
+        }
+
+        .booking-cart-item-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--warm-charcoal);
+            margin-bottom: 4px;
+            letter-spacing: 1px;
+        }
+
+        .booking-cart-item-price {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--matcha-green);
+        }
+
+        .booking-cart-item-remove {
+            background: none;
+            border: none;
+            color: var(--soft-brown);
+            cursor: pointer;
+            font-size: 20px;
+            padding: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .booking-cart-item-remove:hover {
+            color: #c00;
+        }
+
+        .booking-cart-item-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .booking-cart-item-plus,
+        .booking-cart-item-remove {
+            background: none;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .booking-cart-item-plus {
+            background: rgba(168, 181, 160, 0.2);
+            color: var(--matcha-green);
+        }
+
+        .booking-cart-item-plus:hover {
+            background: var(--matcha-green);
+            color: var(--luxury-white);
+        }
+
+        .booking-cart-item-remove {
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+        }
+
+        .booking-cart-item-remove:hover {
+            background: #dc3545;
+            color: var(--luxury-white);
+        }
+
+        .booking-cart-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .booking-cart-clear-btn {
+            flex: 1;
+            padding: 14px 20px;
+            background: transparent;
+            border: 1px solid var(--soft-brown);
+            color: var(--soft-brown);
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .booking-cart-clear-btn:hover {
+            background: var(--soft-brown);
+            color: var(--luxury-white);
+        }
+
+        .booking-cart-checkout-btn {
+            flex: 2;
+            padding: 14px 20px;
+            background: var(--matcha-green);
+            border: 2px solid var(--matcha-green);
+            color: var(--luxury-white);
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .booking-cart-checkout-btn:hover {
+            background: transparent;
+            border-color: var(--matcha-green);
+            color: var(--matcha-green);
+        }
+
+        .booking-cart-prompt {
+            text-align: center;
+            margin-top: 20px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            font-style: italic;
+            color: var(--soft-brown);
+        }
+
+        /* Image Upload Styles */
+        .image-upload-container {
+            margin-top: 10px;
+        }
+
+        .image-upload-area {
+            border: 2px dashed rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--soft-pink);
+        }
+
+        .image-upload-area:hover {
+            border-color: var(--matcha-green);
+            background: rgba(168, 181, 160, 0.1);
+        }
+
+        .image-upload-prompt {
+            cursor: pointer;
+        }
+
+        .image-upload-prompt svg {
+            color: var(--matcha-green);
+            margin-bottom: 10px;
+        }
+
+        .image-upload-prompt p {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--warm-charcoal);
+            margin-bottom: 5px;
+        }
+
+        .image-upload-limit {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12px;
+            font-style: italic;
+            color: var(--soft-brown);
+        }
+
+        .image-preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .image-preview {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-preview-remove {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 20px;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .image-preview-remove:hover {
+            background: rgba(220, 53, 69, 0.9);
+        }
+
+        /* Privacy Message Styles */
+        .privacy-message {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 15px;
+            background: rgba(168, 181, 160, 0.1);
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .privacy-message svg {
+            color: var(--matcha-green);
+            flex-shrink: 0;
+        }
+
+        .privacy-message span {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--soft-brown);
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 500px) {
+            .cart-panel {
+                width: 100vw;
+            }
+
+            .booking-cart-actions {
+                flex-direction: column;
+            }
+        }
+
+        /* Initially hide sections - show on navigation */
+        #schedule,
+        #services,
+        #portfolio-section,
+        #policy {
+            display: none;
+        }
+
+        /* Show section when targeted via URL hash */
+        #schedule:target,
+        #services:target,
+        #portfolio-section:target,
+        #policy:target {
+            display: block;
+        }
+
+        /* Hero hidden when other sections are shown via hash */
+        @media (min-width: 769px) {
+            body:has(#schedule:target) .hero,
+            body:has(#services:target) .hero,
+            body:has(#portfolio-section:target) .hero,
+            body:has(#policy:target) .hero {
+                display: none;
+            }
+        }
+
+        /* Back to Previous button for sections */
+        .back-to-home {
+            display: none;
+            position: fixed;
+            top: 100px;
+            left: 30px;
+            z-index: 999;
+            padding: 12px 25px;
+            background: var(--matcha-green);
+            border: 2px solid var(--matcha-green);
+            color: var(--luxury-white);
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+.back-to-home:hover {
+            background: transparent;
+            border-color: var(--matcha-green);
+            color: var(--matcha-green);
+        }
+
+        /* Show back button when sections are visible */
+        body:has(#schedule:target) .back-to-home,
+        body:has(#services:target) .back-to-home,
+        body:has(#portfolio-section:target) .back-to-home,
+        body:has(#policy:target) .back-to-home {
+            display: block;
+        }
+
+
+
+        /* Services Section - Complete Styling */
+        .services {
+            padding: 150px 60px;
+            background: linear-gradient(180deg, var(--vanilla-white) 0%, var(--soft-pink) 100%);
+            min-height: 100vh;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .services-main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: 6px;
+            color: var(--warm-charcoal);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+
+        .services-main-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--matcha-green);
+        }
+
+        .services-intro {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--soft-brown);
+            margin-top: 25px;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nail-service-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(168, 181, 160, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            background: var(--luxury-white);
+            min-height: 450px;
+        }
+
+        .nail-service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(168, 181, 160, 0.35);
+        }
+
+        .nail-service-card .service-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .nail-service-overlay {
+            padding: 30px 35px 35px;
+            background: var(--luxury-white);
+            position: relative;
+        }
+
+        .nail-service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: var(--warm-charcoal);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .nail-service-desc {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--soft-brown);
+            margin-bottom: 20px;
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+
+        .nail-service-price {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--matcha-green);
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .nail-service-btn {
+            width: 100%;
+            padding: 16px 30px;
+            background: var(--matcha-green);
+            border: 2px solid var(--matcha-green);
+            color: var(--luxury-white);
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .nail-service-btn:hover {
+            background: transparent;
+            border-color: var(--matcha-green);
+            color: var(--matcha-green);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(168, 181, 160, 0.3);
+        }
+
+        /* Services Responsive */
+        @media (max-width: 1024px) {
+            .services {
+                padding: 120px 40px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+                max-width: 900px;
+            }
+
+            .services-main-title {
+                font-size: 38px;
+                letter-spacing: 4px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services {
+                padding: 100px 25px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+                max-width: 500px;
+            }
+
+            .services-main-title {
+                font-size: 32px;
+                letter-spacing: 3px;
+            }
+
+            .services-intro {
+                font-size: 18px;
+            }
+
+            .nail-service-card {
+                min-height: auto;
+            }
+
+            .nail-service-card .service-image {
+                height: 250px;
+            }
+
+            .nail-service-title {
+                font-size: 22px;
+            }
+
+            .nail-service-desc {
+                font-size: 15px;
+            }
+
+            .nail-service-overlay {
+                padding: 25px 28px 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services {
+                padding: 80px 20px;
+            }
+
+            .services-main-title {
+                font-size: 26px;
+                letter-spacing: 2px;
+            }
+
+            .services-intro {
+                font-size: 16px;
+            }
+
+            .services-grid {
+                gap: 30px;
+            }
+
+            .nail-service-card .service-image {
+                height: 220px;
+            }
+
+            .nail-service-title {
+                font-size: 20px;
+            }
+
+            .nail-service-desc {
+                font-size: 14px;
+            }
+
+            .nail-service-price {
+                font-size: 16px;
+            }
+
+            .nail-service-btn {
+                padding: 14px 25px;
+                font-size: 11px;
+            }
+        }
+
+        /* Booking Modal - Complete Styling */
+        .booking-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .booking-modal-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .booking-modal {
+            background: var(--luxury-white);
+            border-radius: 20px;
+            max-width: 550px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .booking-modal-overlay.show .booking-modal {
+            transform: scale(1);
+        }
+
+        .booking-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 30px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background: var(--matcha-green);
+            border-radius: 20px 20px 0 0;
+            position: sticky;
+            top: 0;
+        }
+
+        .booking-modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: var(--luxury-white);
+            text-transform: uppercase;
+        }
+
+        .booking-modal-close {
+            background: none;
+            border: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: var(--luxury-white);
+            line-height: 1;
+            transition: transform 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .booking-modal-close:hover {
+            transform: rotate(90deg);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .booking-modal-header-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .booking-modal-body {
+            padding: 30px;
+        }
+
+        .booking-form-group {
+            margin-bottom: 20px;
+        }
+
+        .booking-form-label {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--soft-brown);
+            margin-bottom: 10px;
+        }
+
+        .booking-form-input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: var(--warm-charcoal);
+            background: var(--luxury-white);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .booking-form-input:focus {
+            outline: none;
+            border-color: var(--matcha-green);
+            box-shadow: 0 0 0 3px rgba(168, 181, 160, 0.2);
+        }
+
+        .booking-form-input::placeholder {
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        .booking-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .booking-form-select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: var(--warm-charcoal);
+            background: var(--luxury-white);
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .booking-form-select:focus {
+            outline: none;
+            border-color: var(--matcha-green);
+        }
+
+        .booking-submit-btn {
+            width: 100%;
+            padding: 18px 30px;
+            background: var(--matcha-green);
+            border: 2px solid var(--matcha-green);
+            color: var(--luxury-white);
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+            margin-top: 10px;
+        }
+
+        .booking-submit-btn:hover {
+            background: transparent;
+            border-color: var(--matcha-green);
+            color: var(--matcha-green);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(168, 181, 160, 0.3);
+        }
+
+
+        .modal-selected-service {
+            background: var(--soft-pink);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+            display: none;
+        }
+
+        .modal-selected-service.show {
+            display: block;
+        }
+
+        .modal-service-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--warm-charcoal);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .modal-service-price {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--matcha-green);
+        }
+
+        @media (max-width: 500px) {
+            .booking-modal {
+                width: 95%;
+                max-height: 95vh;
+            }
+
+            .booking-modal-body {
+                padding: 20px;
+            }
+
+            .booking-form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-modal-header {
+                padding: 20px;
+            }
+
+            .booking-modal-title {
+                font-size: 20px;
+            }
+        }
+
+        /* Notification Styles */
+        .booking-notification {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--soft-pink);
+            color: var(--warm-charcoal);
+            padding: 18px 35px;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 40px rgba(232, 212, 216, 0.5);
+            z-index: 5000;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .booking-notification.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Custom Scrollbar for Booking Modal */
+        .booking-modal ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .booking-modal ::-webkit-scrollbar-track {
+            background: var(--soft-pink);
+            border-radius: 3px;
+        }
+
+        .booking-modal ::-webkit-scrollbar-thumb {
+            background: var(--matcha-green);
+            border-radius: 3px;
+        }
+
+        .booking-modal ::-webkit-scrollbar-thumb:hover {
+            background: #9aa88f;
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+    <nav class="navbar">
+        <a href="#home" class="navbar-logo-link">gelxbygrace</a>
+        <ul class="navbar-menu">
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio-section">Portfolio</a></li>
+            <li><a href="#policy">Policy</a></li>
+            <li><a href="#" onclick="openContactModal(); return false;">Contact Us</a></li>
+        </ul>
+        <div class="cart-icon" onclick="openBookingModal()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="cart-badge" id="cart-badge">0</span>
+        </div>
+    </nav>
+
+    <!-- Back to Previous Button -->
+    <a href="#home" class="back-to-home">← Back</a>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <img src="Untitled design.png" alt="Luxury Nail Art">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-brand">gelxbygrace</h1>
+            <div class="hero-buttons">
+                <a href="#portfolio-section" class="hero-btn hero-btn-outline">See Gallery</a>
+                <button class="hero-btn hero-btn-fill" onclick="openBookingModal()">Book Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="about">
+        <h2 class="section-title">Schedule</h2>
+        <p class="section-subtitle">Book Your Visit</p>
+        <div class="hours-card">
+            <h3 class="hours-card-title">Business Hours</h3>
+            <ul class="hours-card-list">
+                <li class="hours-card-item">
+                    <span class="hours-card-day">Monday</span>
+                    <span class="hours-card-time">10:00 AM - 7:00 PM</span>
+                </li>
+                <li class="hours-card-item">
+                    <span class="hours-card-day">Tuesday</span>
+                    <span class="hours-card-time">10:00 AM - 7:00 PM</span>
+                </li>
+                <li class="hours-card-item">
+                    <span class="hours-card-day">Wednesday</span>
+                    <span class="hours-card-time">10:00 AM - 7:00 PM</span>
+                </li>
+                <li class="hours-card-item">
+                    <span class="hours-card-day">Thursday</span>
+                    <span class="hours-card-time">10:00 AM - 7:00 PM</span>
+                </li>
+                <li class="hours-card-item">
+                    <span class="hours-card-day">Friday</span>
+                    <span class="hours-card-time">10:00 AM - 8:00 PM</span>
+                </li>
+                <li class="hours-card-item">
+                    <span class="hours-card-day">Saturday</span>
+                    <span class="hours-card-time">10:00 AM - 6:00 PM</span>
+                </li>
+                <li class="hours-card-item">
+                    <span class="hours-card-day">Sunday</span>
+                    <span class="hours-card-time">Closed</span>
+                </li>
+            </ul>
+        </div>
+        <button class="about-book-btn" onclick="openBookingModal()">Book Now</button>
+        <p class="about-book-info">Easy online booking • Confirmation via text & email</p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="services-header">
+            <h2 class="services-main-title">Our Nail Services</h2>
+            <p class="services-intro">Choose your favorite nail service and book your appointment easily.</p>
+        </div>
+        <div class="services-grid">
+            <div class="nail-service-card">
+                <img src="lol.jpg" alt="GelX Nails" class="service-image">
+                <div class="nail-service-overlay">
+                    <h3 class="nail-service-title">GelX Nails</h3>
+                    <p class="nail-service-desc">GelX nails provide a lightweight, natural look with long-lasting durability. Perfect for adding length and style without damage to natural nails.</p>
+                    <p class="nail-service-price">$50 – $70</p>
+                    <button class="nail-service-btn" onclick="addToBooking('GelX Nails', '$50 – $70')">Book Now</button>
+                </div>
+            </div>
+
+            <div class="nail-service-card">
+                <img src="615283791_18043967042710461_2286383623359625412_n..jpg" alt="Builder Gel Nails" class="service-image">
+                <div class="nail-service-overlay">
+                    <h3 class="nail-service-title">Builder Gel Nails</h3>
+                    <p class="nail-service-desc">Builder Gel strengthens and shapes nails, ideal for clients seeking robust, sculpted nails that last weeks.</p>
+                    <p class="nail-service-price">$60 – $80</p>
+                    <button class="nail-service-btn" onclick="addToBooking('Builder Gel Nails', '$60 – $80')">Book Now</button>
+                </div>
+            </div>
+
+            <div class="nail-service-card">
+                <img src="625187309_18046460060710461_2437966645646766953_n..jpg" alt="Hard Gel Nails" class="service-image">
+                <div class="nail-service-overlay">
+                    <h3 class="nail-service-title">Hard Gel Nails</h3>
+                    <p class="nail-service-desc">Hard Gel nails offer a glossy, durable finish, perfect for intricate nail designs and long-lasting wear.</p>
+                    <p class="nail-service-price">$55 – $75</p>
+                    <button class="nail-service-btn" onclick="addToBooking('Hard Gel Nails', '$55 – $75')">Book Now</button>
+                </div>
+            </div>
+
+            <div class="nail-service-card">
+                <img src="Gelcare UV Gel Nail Polish - Apricot Oil.jpeg" alt="Nail Removal" class="service-image">
+                <div class="nail-service-overlay">
+                    <h3 class="nail-service-title">Nail Removal</h3>
+                    <p class="nail-service-desc">Safe and painless nail removal, preparing your nails for a fresh set. Recommended before every new service.</p>
+                    <p class="nail-service-price">$15 – $25</p>
+                    <button class="nail-service-btn" onclick="addToBooking('Nail Removal', '$15 – $25')">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio-section" class="portfolio">
+        <h2 class="portfolio-title">Portfolio</h2>
+        <p class="portfolio-subtitle">A Glimpse of Our Beautiful Work</p>
+        <div class="instagram-grid">
+            <!-- Instagram Post 1 -->
+            <div class="instagram-post">
+                <div class="instagram-image-container">
+                    <img src="15.jpg" alt="Nail Design 1">
+                </div>
+                <p class="instagram-title">Cat eye is going nowhere this season 💌❤️</p>
+            </div>
+            <!-- Instagram Post 2 -->
+            <div class="instagram-post">
+                <div class="instagram-image-container">
+                    <img src="2.jpg" alt="Nail Design 2">
+                </div>
+                <p class="instagram-title">Set of my dreamsss🎐</p>
+            </div>
+            <!-- Instagram Post 3 -->
+            <div class="instagram-post">
+                <div class="instagram-image-container">
+                    <img src="3.jpg" alt="Nail Design 3">
+                </div>
+                <p class="instagram-title">Dainty Christmas freestyle</p>
+            </div>
+            <!-- Instagram Post 4 -->
+            <div class="instagram-post">
+                <div class="instagram-image-container">
+                    <img src="4.jpg" alt="Nail Design 4">
+                </div>
+                <p class="instagram-title">Cat eye</p>
+            </div>
+            <!-- Instagram Post 5 -->
+            <div class="instagram-post">
+                <div class="instagram-image-container">
+                    <img src="5.jpg" alt="Nail Design 5">
+                </div>
+                <p class="instagram-title">Snoopy x Grinch</p>
+            </div>
+            <!-- Instagram Post 6 -->
+            <div class="instagram-post">
+                <div class="instagram-image-container">
+                    <img src="6.jpg" alt="Nail Design 6">
+                </div>
+                <p class="instagram-title">🔒</p>
+            </div>
+            <!-- Instagram Post 7 -->
+            <div class="instagram-post">
+                <div class="instagram-image-container">
+                    <img src="7.jpg" alt="Nail Design 7">
+                </div>
+                <p class="instagram-title">🧵🧸🫐👜</p>
+            </div>
+            <!-- Instagram Post 8 -->
+            <div class="instagram-post">
+                <div class="instagram-image-container">
+                    <img src="8.jpg" alt="Nail Design 8">
+                </div>
+                <p class="instagram-title">Abstract</p>
+            </div>
+            <!-- Instagram Post 9 -->
+            <div class="instagram-post">
+                <div class="instagram-image-container">
+                    <img src="18.jpg" alt="Nail Design 9">
+                </div>
+                <p class="instagram-title">Sweater Weather🧶</p>
+            </div>
+            <!-- Instagram Post 10 -->
+            <div class="instagram-post">
+                <div class="instagram-image-container">
+                    <img src="10.jpg" alt="Nail Design 10">
+                </div>
+                <p class="instagram-title">VEGAS READY 🎲🍒🎱🎰</p>
+            </div>
+            <!-- Instagram Post 11 -->
+            <div class="instagram-post">
+                <div class="instagram-image-container">
+                    <img src="12.jpg" alt="Nail Design 11">
+                </div>
+                <p class="instagram-title">Gradiant💚</p>
+            </div>
+            <!-- Instagram Post 12 -->
+            <div class="instagram-post">
+                <div class="instagram-image-container">
+                    <img src="13.jpg" alt="Nail Design 12">
+                </div>
+                <p class="instagram-title">Stargirl⭐️</p>
+            </div>
+            <!-- Instagram Post 13 -->
+            <div class="instagram-post">
+                <div class="instagram-image-container">
+                    <img src="14.jpg" alt="Nail Design 13">
+                </div>
+                <p class="instagram-title">Flowers!🌸✨</p>
+            </div>
+            <!-- Instagram Post 14 -->
+            <div class="instagram-post">
+                <div class="instagram-image-container">
+                    <img src="1.jpg" alt="Nail Design 14">
+                </div>
+                <p class="instagram-title">Subtle christmas 🎄🍒</p>
+            </div>
+            <!-- Instagram CTA - View More -->
+            <div class="instagram-cta">
+                <a href="https://instagram.com/gelxbygrace" target="_blank" class="instagram-cta-link" style="text-decoration: none;">
+                    <div class="instagram-cta-container">
+                        <div class="instagram-cta-content">
+                            <div class="instagram-cta-icon">📸</div>
+                            <p class="instagram-cta-text">See More</p>
+                            <p class="instagram-cta-subtext">Follow us @gelxbygrace</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Policy Section -->
+    <section id="policy" class="policy">
+        <h2 class="policy-title">Our Policy</h2>
+        <div class="policy-content">
+            <div class="policy-item">
+                <h3 class="policy-item-title">Appointments & Cancellations</h3>
+                <p class="policy-item-text">Please arrive 10 minutes before your scheduled appointment. Cancellations must be made at least 24 hours in advance to avoid a fee.</p>
+            </div>
+            <div class="policy-item">
+                <h3 class="policy-item-title">Payment</h3>
+                <p class="policy-item-text">We accept cash, credit cards, and digital payments. Payment is due at the time of service.</p>
+            </div>
+            <div class="policy-item">
+                <h3 class="policy-item-title">Aftercare</h3>
+                <p class="policy-item-text">To maintain your nails, avoid using them as tools and apply cuticle oil daily. Return every 2-3 weeks for fills.</p>
+            </div>
+            <div class="policy-item">
+                <h3 class="policy-item-title">Refunds</h3>
+                <p class="policy-item-text">We stand behind our work. If you experience any issues within 7 days, please contact us for a complimentary repair.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Notification -->
+    <div id="booking-notification" class="booking-notification">
+        <span id="notification-text"></span>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="booking-modal-overlay">
+        <div class="booking-modal">
+            <div class="booking-modal-header">
+                <h3 class="booking-modal-title" id="booking-modal-title">Booking</h3>
+                <div class="booking-modal-header-actions">
+                    <button class="booking-modal-close" onclick="closeBookingModal()">&times;</button>
+                </div>
+            </div>
+        <div class="booking-modal-body">
+                <!-- Selected Service Display -->
+                <div id="modal-selected-service" class="modal-selected-service">
+                    <div class="modal-service-name" id="modal-service-name">Select a Service</div>
+                    <div class="modal-service-price" id="modal-service-price">$0</div>
+                    <button class="booking-change-service-btn" onclick="showServiceSelection()">Change Service</button>
+                </div>
+
+                <!-- Service Selection Group (Hidden by default, shown after selection) -->
+                <div id="service-select-group" style="display: none; margin-bottom: 25px;">
+                    <div class="booking-form-group">
+                        <label class="booking-form-label">Selected Service</label>
+                        <select class="booking-form-select" id="booking-service" required>
+                            <option value="GelX Nails|$50 – $70">GelX Nails - $50 – $70</option>
+                            <option value="Builder Gel Nails|$60 – $80">Builder Gel Nails - $60 – $80</option>
+                            <option value="Hard Gel Nails|$55 – $75">Hard Gel Nails - $55 – $75</option>
+                            <option value="Nail Removal|$15 – $25">Nail Removal - $15 – $25</option>
+                            <option value="Gel Manicure|$35 – $45">Gel Manicure - $35 – $45</option>
+                            <option value="Gel Pedicure|$45 – $55">Gel Pedicure - $45 – $55</option>
+                            <option value="Nail Art|$10 – $30">Nail Art - $10 – $30</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Cart Items in Booking Modal -->
+                <div id="booking-cart-items" style="display: none;">
+                    <div class="booking-cart-header">
+                        <h4 class="booking-cart-title">Your Selected Services</h4>
+                        <p class="booking-cart-subtitle">Review your selection before booking</p>
+                    </div>
+                    <div class="booking-cart-list" id="booking-cart-list"></div>
+                    <div class="booking-cart-actions">
+                        <button class="booking-cart-clear-btn" onclick="clearCartAndReset()">Clear Selection</button>
+                        <button class="booking-cart-checkout-btn" onclick="proceedToForm()">Continue to Details</button>
+                    </div>
+                </div>
+
+                <!-- Service Selection Grid (shown when no cart items) -->
+                <div id="service-selection-grid" class="booking-service-grid">
+                    <h4 class="booking-service-selection-title">Select a Service</h4>
+                    <div class="booking-services-list">
+                        <div class="booking-service-card" onclick="addToCartFromModal('GelX Nails', '$50 – $70', this)">
+                            <div class="booking-service-card-name">GelX Nails</div>
+                            <div class="booking-service-card-price">$50 – $70</div>
+                        </div>
+                        <div class="booking-service-card" onclick="addToCartFromModal('Builder Gel Nails', '$60 – $80', this)">
+                            <div class="booking-service-card-name">Builder Gel Nails</div>
+                            <div class="booking-service-card-price">$60 – $80</div>
+                        </div>
+                        <div class="booking-service-card" onclick="addToCartFromModal('Hard Gel Nails', '$55 – $75', this)">
+                            <div class="booking-service-card-name">Hard Gel Nails</div>
+                            <div class="booking-service-card-price">$55 – $75</div>
+                        </div>
+                        <div class="booking-service-card" onclick="addToCartFromModal('Nail Removal', '$15 – $25', this)">
+                            <div class="booking-service-card-name">Nail Removal</div>
+                            <div class="booking-service-card-price">$15 – $25</div>
+                        </div>
+                        <div class="booking-service-card" onclick="addToCartFromModal('Gel Manicure', '$35 – $45', this)">
+                            <div class="booking-service-card-name">Gel Manicure</div>
+                            <div class="booking-service-card-price">$35 – $45</div>
+                        </div>
+                        <div class="booking-service-card" onclick="addToCartFromModal('Gel Pedicure', '$45 – $55', this)">
+                            <div class="booking-service-card-name">Gel Pedicure</div>
+                            <div class="booking-service-card-price">$45 – $55</div>
+                        </div>
+                        <div class="booking-service-card" onclick="addToCartFromModal('Nail Art', '$10 – $30', this)">
+                            <div class="booking-service-card-name">Nail Art</div>
+                            <div class="booking-service-card-price">$10 – $30</div>
+                        </div>
+                    </div>
+<p class="booking-cart-prompt">Confirmation will be sent via text or email</p>
+                </div>
+
+                <!-- Booking Form (shown after clicking Continue) -->
+                <form id="booking-form" onsubmit="submitBooking(event)" style="display: none;">
+                    <div class="booking-form-group">
+                        <label class="booking-form-label">Service</label>
+                        <input type="text" class="booking-form-input" id="booking-service-name" readonly>
+                    </div>
+                    <div class="booking-form-row">
+                        <div class="booking-form-group">
+                            <label class="booking-form-label">Name</label>
+                            <input type="text" class="booking-form-input" id="booking-name" placeholder="Your name" required>
+                        </div>
+                        <div class="booking-form-group">
+                            <label class="booking-form-label">Phone</label>
+                            <input type="tel" class="booking-form-input" id="booking-phone" placeholder="(555) 123-4567" required>
+                        </div>
+                    </div>
+                    <div class="booking-form-group">
+                        <label class="booking-form-label">Email</label>
+                        <input type="email" class="booking-form-input" id="booking-email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="booking-form-row">
+                        <div class="booking-form-group">
+                            <label class="booking-form-label">Date</label>
+                            <input type="date" class="booking-form-input" id="booking-date" required>
+                        </div>
+                        <div class="booking-form-group">
+                            <label class="booking-form-label">Time</label>
+                            <select class="booking-form-select" id="booking-time" required>
+                                <option value="">Select time...</option>
+                                <option value="10:00 AM">10:00 AM</option>
+                                <option value="11:00 AM">11:00 AM</option>
+                                <option value="12:00 PM">12:00 PM</option>
+                                <option value="1:00 PM">1:00 PM</option>
+                                <option value="2:00 PM">2:00 PM</option>
+                                <option value="3:00 PM">3:00 PM</option>
+                                <option value="4:00 PM">4:00 PM</option>
+                                <option value="5:00 PM">5:00 PM</option>
+                                <option value="6:00 PM">6:00 PM</option>
+                                <option value="7:00 PM">7:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="booking-form-group">
+                        <label class="booking-form-label">Notes (Optional)</label>
+                        <textarea class="booking-form-input" id="booking-notes" rows="3" placeholder="Any special requests or preferences..."></textarea>
+                    </div>
+                    
+                    <!-- Image Upload for Nail Inspiration -->
+                    <div class="booking-form-group">
+                        <label class="booking-form-label">Inspiration Photos (Optional)</label>
+                        <div class="image-upload-container">
+                            <div class="image-upload-area" id="image-upload-area">
+                                <input type="file" id="booking-images" accept="image/*" multiple onchange="handleImageUpload(event)" style="display: none;">
+                                <div class="image-upload-prompt" onclick="document.getElementById('booking-images').click()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                        <polyline points="21 15 16 10 5 21"></polyline>
+                                    </svg>
+                                    <p>Click to upload inspiration photos (optional)</p>
+                                    <span class="image-upload-limit">Maximum 3 photos</span>
+                                </div>
+                            </div>
+                            <div class="image-preview-container" id="image-preview-container"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Privacy Protection Message -->
+                    <div class="privacy-message">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        <span>Your privacy is protected. All information and images are securely stored.</span>
+                    </div>
+                    
+                    <button type="submit" class="booking-submit-btn">Request Appointment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="contact-modal-overlay">
+        <div class="contact-modal">
+            <div class="contact-modal-header">
+                <h3 class="contact-modal-title">Contact Us</h3>
+                <button class="contact-modal-close" onclick="closeContactModal()">&times;</button>
+            </div>
+            <div class="contact-modal-body">
+                <form id="contact-form" onsubmit="submitContact(event)">
+                    <div class="contact-form-group">
+                        <label class="contact-form-label">Name</label>
+                        <input type="text" class="contact-form-input" id="contact-name" placeholder="Your name" required>
+                    </div>
+                    <div class="contact-form-group">
+                        <label class="contact-form-label">Email</label>
+                        <input type="email" class="contact-form-input" id="contact-email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="contact-form-group">
+                        <label class="contact-form-label">Message</label>
+                        <textarea class="contact-form-input" id="contact-message" rows="5" placeholder="Write your message here..." required></textarea>
+                    </div>
+                    <button type="submit" class="contact-submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Panel -->
+    <div class="cart-panel-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-panel" id="cart-panel">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Selection</h3>
+            <button class="cart-close" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="cart-empty" id="cart-empty">
+                <div class="cart-empty-icon">🛒</div>
+                <p class="cart-empty-text">Your selection is empty</p>
+                <p style="margin-top: 10px; font-size: 14px; color: var(--soft-brown);">Add services from the Services section</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total Services</span>
+                <span class="cart-total-price" id="cart-total">0</span>
+            </div>
+            <button class="cart-checkout-btn" onclick="proceedToBooking()">Book Now</button>
+            <button class="cart-clear-btn" onclick="clearCart()">Clear Selection</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-contact-inline">
+            <span><a href="https://maps.google.com" target="_blank">Orange County, CA</a></span>
+            <span class="separator">|</span>
+            <span><a href="tel:+15551234567">+1 (555) 123-4567</a></span>
+            <span class="separator">|</span>
+            <span><a href="mailto:gelxbygrace@gmail.com">gelxbygrace@gmail.com</a></span>
+            <span class="separator">|</span>
+            <span>Mon - Sat: 10AM - 7PM</span>
+        </div>
+        <div class="footer-social">
+            <a href="https://instagram.com/gelxbygrace" target="_blank" aria-label="Follow us on Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+            </a>
+            <a href="https://tiktok.com/@gelxbygrace" target="_blank" aria-label="Follow us on TikTok">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                </svg>
+            </a>
+        </div>
+        <p class="footer-copyright">© 2026 gelxbygrace. All rights reserved.</p>
+    </footer>
+
+    <script>
+// Navbar Scroll Effect
+        const navbar = document.querySelector('.navbar');
+        
+        // ===== SHARED DATA MANAGEMENT FOR CLIENT BOOKINGS =====
+        // Use the same localStorage key as admin.js for shared data
+        const DB_KEY = 'gelxbygrace_data';
+        
+        // Initialize shared database
+        function initSharedDB() {
+            const existing = localStorage.getItem(DB_KEY);
+            if (!existing) {
+                const defaultData = {
+                    appointments: [],
+                    messages: [],
+                    clients: [],
+                    services: []
+                };
+                localStorage.setItem(DB_KEY, JSON.stringify(defaultData));
+            }
+            return getSharedDB();
+        }
+        
+        function getSharedDB() {
+            return JSON.parse(localStorage.getItem(DB_KEY) || '{"appointments":[],"messages":[],"clients":[],"services":[]}');
+        }
+        
+        function saveSharedDB(data) {
+            localStorage.setItem(DB_KEY, JSON.stringify(data));
+        }
+        
+        // Generate unique ID
+        function generateBookingId() {
+            return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        }
+        
+        // Save booking to shared database (visible in admin)
+        function saveBookingToSharedDB(booking) {
+            const data = getSharedDB();
+            const newAppointment = {
+                id: generateBookingId(),
+                clientName: booking.name,
+                clientPhone: booking.phone,
+                clientEmail: booking.email,
+                service: booking.service,
+                date: booking.date,
+                time: booking.time,
+                notes: booking.notes,
+                status: 'pending',
+                createdAt: Date.now(),
+                source: 'website'
+            };
+            data.appointments.push(newAppointment);
+            saveSharedDB(data);
+            console.log('Booking saved to database:', newAppointment);
+            return newAppointment;
+        }
+        
+        // Save contact message to shared database
+        function saveMessageToSharedDB(message) {
+            const data = getSharedDB();
+            const newMessage = {
+                id: generateBookingId(),
+                clientName: message.name,
+                clientEmail: message.email,
+                subject: message.subject || 'General Inquiry',
+                message: message.message,
+                read: false,
+                replied: false,
+                createdAt: Date.now(),
+                source: 'website'
+            };
+            data.messages.push(newMessage);
+            saveSharedDB(data);
+            console.log('Message saved to database:', newMessage);
+            return newMessage;
+        }
+        
+        // Initialize database on page load
+        initSharedDB();
+        
+        // ===== END SHARED DATA =====
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Booking Modal Functions
+        let selectedServiceData = { name: '', price: '' };
+
+        function openBookingModal(serviceName, price) {
+            const modal = document.getElementById('booking-modal');
+            const serviceGrid = document.getElementById('service-selection-grid');
+            const selectedServiceDisplay = document.getElementById('modal-selected-service');
+            const serviceSelectGroup = document.getElementById('service-select-group');
+            
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Reset to service selection grid
+            if (serviceGrid) {
+                serviceGrid.style.display = 'block';
+            }
+            if (selectedServiceDisplay) {
+                selectedServiceDisplay.style.display = 'none';
+            }
+            if (serviceSelectGroup) {
+                serviceSelectGroup.style.display = 'none';
+            }
+            
+            // Clear previous selection styling
+            document.querySelectorAll('.booking-service-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            if (serviceName && price) {
+                // Pre-select the service if provided
+                selectService(serviceName, price, null, true);
+            }
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('booking-modal');
+            
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+            
+            // Reset state
+            selectedServiceData = { name: '', price: '' };
+            document.querySelectorAll('.booking-service-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+        }
+
+        function selectService(serviceName, price, element, fromExternal = false) {
+            // Update selected service data
+            selectedServiceData = { name: serviceName, price: price };
+            
+            // Update service selection grid display
+            const serviceGrid = document.getElementById('service-selection-grid');
+            const selectedServiceDisplay = document.getElementById('modal-selected-service');
+            const serviceNameEl = document.getElementById('modal-service-name');
+            const servicePriceEl = document.getElementById('modal-service-price');
+            const serviceSelectGroup = document.getElementById('service-select-group');
+            const serviceSelect = document.getElementById('booking-service');
+            
+            // Update the display
+            if (serviceNameEl) serviceNameEl.textContent = serviceName;
+            if (servicePriceEl) servicePriceEl.textContent = price;
+            
+            // Set the select value
+            if (serviceSelect) {
+                const options = serviceSelect.options;
+                for (let i = 0; i < options.length; i++) {
+                    if (options[i].text.includes(serviceName)) {
+                        serviceSelect.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+            
+            // Update card styling
+            document.querySelectorAll('.booking-service-card').forEach(card => {
+                card.classList.remove('selected');
+                if (card.querySelector('.booking-service-card-name').textContent === serviceName) {
+                    card.classList.add('selected');
+                }
+            });
+            
+            // Switch to selected service display view
+            if (serviceGrid && !fromExternal) {
+                serviceGrid.style.display = 'none';
+            }
+            if (selectedServiceDisplay) {
+                selectedServiceDisplay.style.display = 'block';
+            }
+            if (serviceSelectGroup) {
+                serviceSelectGroup.style.display = 'block';
+            }
+        }
+
+        function showServiceSelection() {
+            const serviceGrid = document.getElementById('service-selection-grid');
+            const selectedServiceDisplay = document.getElementById('modal-selected-service');
+            const serviceSelectGroup = document.getElementById('service-select-group');
+            
+            if (serviceGrid) {
+                serviceGrid.style.display = 'block';
+            }
+            if (selectedServiceDisplay) {
+                selectedServiceDisplay.style.display = 'none';
+            }
+            if (serviceSelectGroup) {
+                serviceSelectGroup.style.display = 'none';
+            }
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('booking-modal');
+            if (e.target === modal) {
+                closeBookingModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeBookingModal();
+            }
+        });
+
+        // Booking Form Submission
+        function submitBooking(e) {
+            e.preventDefault();
+            
+            const service = document.getElementById('booking-service').value;
+            const name = document.getElementById('booking-name').value;
+            const phone = document.getElementById('booking-phone').value;
+            const email = document.getElementById('booking-email').value;
+            const date = document.getElementById('booking-date').value;
+            const time = document.getElementById('booking-time').value;
+            const notes = document.getElementById('booking-notes').value;
+            
+            // Format the booking message
+            const bookingDetails = service.split('|');
+            const serviceTitle = bookingDetails[0];
+            const servicePrice = bookingDetails[1] || '';
+            
+            const message = `📅 NEW BOOKING REQUEST\n\n` +
+                `Service: ${serviceTitle}\n` +
+                `Price: ${servicePrice}\n\n` +
+                `👤 Name: ${name}\n` +
+                `📞 Phone: ${phone}\n` +
+                `📧 Email: ${email}\n\n` +
+                `🗓️ Date: ${date}\n` +
+                `⏰ Time: ${time}\n\n` +
+                `📝 Notes: ${notes || 'None'}`;
+            
+            // Show notification
+            showNotification(`✓ Booking request sent! We'll contact you at ${phone} shortly.`);
+            
+            // Log details (in production, this would send to your backend)
+            console.log('Booking Details:', {
+                service: serviceTitle,
+                price: servicePrice,
+                name,
+                phone,
+                email,
+                date,
+                time,
+                notes
+            });
+            
+            // Close modal and reset form
+            closeBookingModal();
+            document.getElementById('booking-form').reset();
+            
+            // Reset modal service display
+            document.getElementById('modal-service-name').textContent = 'Select a Service';
+            document.getElementById('modal-service-price').textContent = '$0';
+        }
+
+        // Show notification
+        function showNotification(message) {
+            const notification = document.getElementById('booking-notification');
+            const notificationText = document.getElementById('notification-text');
+            
+            if (notification && notificationText) {
+                notificationText.textContent = message;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 5000);
+            } else {
+                alert(message);
+            }
+        }
+
+        // Update existing booking function for service cards
+        function addToBooking(serviceName, price) {
+            openBookingModal(serviceName, price);
+        }
+
+        // Set minimum date to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.getElementById('booking-date');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.setAttribute('min', today);
+            }
+        });
+
+        // Contact Modal Functions
+        function openContactModal() {
+            const modal = document.getElementById('contact-modal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contact-modal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close contact modal when clicking outside
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('contact-modal');
+            if (e.target === modal) {
+                closeContactModal();
+            }
+        });
+
+        // Close contact modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeContactModal();
+            }
+        });
+
+        // Contact Form Submission
+        function submitContact(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const message = document.getElementById('contact-message').value;
+            
+            // Log contact details (in production, this would send to your backend)
+            console.log('Contact Form Details:', {
+                name,
+                email,
+                message
+            });
+            
+            // Show notification
+            showNotification('✓ Message sent successfully! We\'ll get back to you soon.');
+            
+            // Close modal and reset form
+            closeContactModal();
+            document.getElementById('contact-form').reset();
+        }
+
+// Cart Functions
+        let cart = [];
+        let currentBookingView = 'selection'; // 'selection', 'cart', 'form'
+
+        function toggleCart() {
+            const overlay = document.getElementById('cart-overlay');
+            const panel = document.getElementById('cart-panel');
+            overlay.classList.toggle('show');
+            panel.classList.toggle('show');
+        }
+
+        // Booking Modal Functions
+        let cart = [];
+        let currentBookingView = 'selection'; // 'selection', 'cart', 'form'
+
+        function toggleCart() {
+            const cartItem = {
+                id: Date.now(),
+                name: serviceName,
+                price: price
+            };
+            
+            cart.push(cartItem);
+            updateCartDisplay();
+            updateCartBadge();
+            
+            // Show notification
+            showNotification(`✓ ${serviceName} added to your selection!`);
+            
+            // Pulse the badge
+            const badge = document.getElementById('cart-badge');
+            badge.classList.add('pulse');
+            setTimeout(() => badge.classList.remove('pulse'), 300);
+        }
+
+        function addToCartFromModal(serviceName, price, element) {
+            // Add visual feedback
+            element.style.transform = 'scale(0.95)';
+            setTimeout(() => element.style.transform = '', 200);
+            
+            addToCart(serviceName, price);
+            
+            // Refresh booking modal display
+            setTimeout(() => updateBookingModalDisplay(), 100);
+        }
+
+        function removeFromCart(itemId) {
+            cart = cart.filter(item => item.id !== itemId);
+            updateCartDisplay();
+            updateCartBadge();
+            
+            // Refresh booking modal display
+            updateBookingModalDisplay();
+        }
+
+        function addMoreOfItem(serviceName, price, itemId) {
+            // Toggle the dropdown for this specific item
+            const existingDropdown = document.querySelector(`.booking-cart-dropdown[data-item-id="${itemId}"]`);
+            
+            // Close all other dropdowns first
+            document.querySelectorAll('.booking-cart-dropdown').forEach(dd => {
+                if (dd !== existingDropdown) {
+                    dd.style.display = 'none';
+                }
+            });
+            
+            if (existingDropdown) {
+                // Toggle this dropdown
+                existingDropdown.style.display = existingDropdown.style.display === 'block' ? 'none' : 'block';
+            } else {
+                // Create new dropdown
+                const itemElement = document.querySelector(`.booking-cart-item[data-item-id="${itemId}"]`);
+                if (itemElement) {
+                    const dropdown = document.createElement('div');
+                    dropdown.className = 'booking-cart-dropdown';
+                    dropdown.dataset.itemId = itemId;
+                    dropdown.innerHTML = `
+                        <div class="booking-cart-dropdown-list">
+                            <div class="booking-cart-dropdown-item" onclick="addServiceToCartFromDropdown('GelX Nails', '$50 – $70', ${itemId})">
+                                <span class="booking-cart-dropdown-name">GelX Nails</span>
+                                <span class="booking-cart-dropdown-price">$50 – $70</span>
+                            </div>
+                            <div class="booking-cart-dropdown-item" onclick="addServiceToCartFromDropdown('Builder Gel Nails', '$60 – $80', ${itemId})">
+                                <span class="booking-cart-dropdown-name">Builder Gel Nails</span>
+                                <span class="booking-cart-dropdown-price">$60 – $80</span>
+                            </div>
+                            <div class="booking-cart-dropdown-item" onclick="addServiceToCartFromDropdown('Hard Gel Nails', '$55 – $75', ${itemId})">
+                                <span class="booking-cart-dropdown-name">Hard Gel Nails</span>
+                                <span class="booking-cart-dropdown-price">$55 – $75</span>
+                            </div>
+                            <div class="booking-cart-dropdown-item" onclick="addServiceToCartFromDropdown('Nail Removal', '$15 – $25', ${itemId})">
+                                <span class="booking-cart-dropdown-name">Nail Removal</span>
+                                <span class="booking-cart-dropdown-price">$15 – $25</span>
+                            </div>
+                            <div class="booking-cart-dropdown-item" onclick="addServiceToCartFromDropdown('Gel Manicure', '$35 – $45', ${itemId})">
+                                <span class="booking-cart-dropdown-name">Gel Manicure</span>
+                                <span class="booking-cart-dropdown-price">$35 – $45</span>
+                            </div>
+                            <div class="booking-cart-dropdown-item" onclick="addServiceToCartFromDropdown('Gel Pedicure', '$45 – $55', ${itemId})">
+                                <span class="booking-cart-dropdown-name">Gel Pedicure</span>
+                                <span class="booking-cart-dropdown-price">$45 – $55</span>
+                            </div>
+                            <div class="booking-cart-dropdown-item" onclick="addServiceToCartFromDropdown('Nail Art', '$10 – $30', ${itemId})">
+                                <span class="booking-cart-dropdown-name">Nail Art</span>
+                                <span class="booking-cart-dropdown-price">$10 – $30</span>
+                            </div>
+                        </div>
+                    `;
+                    itemElement.parentNode.insertBefore(dropdown, itemElement.nextSibling);
+                }
+            }
+        }
+
+        function addServiceToCartFromDropdown(serviceName, price, sourceItemId) {
+            // Add the new service to cart
+            const cartItem = {
+                id: Date.now(),
+                name: serviceName,
+                price: price
+            };
+            
+            cart.push(cartItem);
+            updateCartDisplay();
+            updateCartBadge();
+            
+            // Close the dropdown
+            const dropdown = document.querySelector(`.booking-cart-dropdown[data-item-id="${sourceItemId}"]`);
+            if (dropdown) {
+                dropdown.style.display = 'none';
+            }
+            
+            // Refresh booking modal display
+            updateBookingModalDisplay();
+            
+            showNotification(`✓ ${serviceName} added!`);
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCartDisplay();
+            updateCartBadge();
+            showNotification('Selection cleared');
+        }
+
+        function clearCartAndReset() {
+            clearCart();
+            showBookingModalWithServiceSelection();
+            showNotification('Selection cleared');
+        }
+
+        function updateCartBadge() {
+            const badge = document.getElementById('cart-badge');
+            badge.textContent = cart.length;
+        }
+
+        function updateCartDisplay() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const emptyState = document.getElementById('cart-empty');
+            const cartTotal = document.getElementById('cart-total');
+            
+            // Clear current items (except empty state)
+            const existingItems = cartItemsContainer.querySelectorAll('.cart-item');
+            existingItems.forEach(item => item.remove());
+            
+            if (cart.length === 0) {
+                emptyState.style.display = 'block';
+                cartTotal.textContent = '0';
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            cartTotal.textContent = cart.length;
+            
+            cart.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.innerHTML = `
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">${item.price}</div>
+                    </div>
+                    <button class="cart-item-remove" onclick="removeFromCart(${item.id})">&times;</button>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+            });
+        }
+
+        // Booking Modal Functions
+        function openBookingModal() {
+            const modal = document.getElementById('booking-modal');
+            const serviceGrid = document.getElementById('service-selection-grid');
+            const bookingCartItems = document.getElementById('booking-cart-items');
+            const bookingForm = document.getElementById('booking-form');
+            
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Update the modal display based on cart state
+            updateBookingModalDisplay();
+        }
+
+        function updateBookingModalDisplay() {
+            const backButton = document.getElementById('booking-modal-back');
+            const serviceGrid = document.getElementById('service-selection-grid');
+            const bookingCartItems = document.getElementById('booking-cart-items');
+            const bookingForm = document.getElementById('booking-form');
+            const bookingCartList = document.getElementById('booking-cart-list');
+            const bookingModalTitle = document.getElementById('booking-modal-title');
+            
+            // Clear existing cart items in modal
+            const existingItems = bookingCartList.querySelectorAll('.booking-cart-item');
+            existingItems.forEach(item => item.remove());
+            
+            if (cart.length > 0) {
+                // Show cart items
+                serviceGrid.style.display = 'none';
+                bookingCartItems.style.display = 'block';
+                bookingForm.style.display = 'none';
+                bookingModalTitle.textContent = 'Your Selection';
+                currentBookingView = 'cart';
+                
+                // Show back button when in cart view
+                backButton.style.display = 'flex';
+                
+                // Add cart items
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'booking-cart-item';
+                    itemElement.dataset.itemId = item.id;
+                    itemElement.innerHTML = `
+                        <div class="booking-cart-item-info">
+                            <div class="booking-cart-item-name">${item.name}</div>
+                            <div class="booking-cart-item-price">${item.price}</div>
+                        </div>
+                        <div class="booking-cart-item-actions">
+<button class="booking-cart-item-plus" onclick="addMoreOfItem('${item.name}', '${item.price}', ${item.id})">+</button>
+                            <button class="booking-cart-item-remove" onclick="removeFromCart(${item.id})">&times;</button>
+                        </div>
+                    `;
+                    bookingCartList.appendChild(itemElement);
+                });
+            } else {
+                // Show service selection
+                serviceGrid.style.display = 'block';
+                bookingCartItems.style.display = 'none';
+                bookingForm.style.display = 'none';
+                bookingModalTitle.textContent = 'Booking';
+                currentBookingView = 'selection';
+                
+                // Hide back button when in selection view
+                backButton.style.display = 'none';
+            }
+        }
+
+        function showBookingModalWithServiceSelection() {
+            const serviceGrid = document.getElementById('service-selection-grid');
+            const bookingCartItems = document.getElementById('booking-cart-items');
+            const bookingForm = document.getElementById('booking-form');
+            const bookingModalTitle = document.getElementById('booking-modal-title');
+            
+            serviceGrid.style.display = 'block';
+            bookingCartItems.style.display = 'none';
+            bookingForm.style.display = 'none';
+            bookingModalTitle.textContent = 'Booking';
+        }
+
+        function proceedToForm() {
+            if (cart.length === 0) {
+                showNotification('Please add at least one service to your selection');
+                return;
+            }
+            
+            const backButton = document.getElementById('booking-modal-back');
+            const serviceGrid = document.getElementById('service-selection-grid');
+            const bookingCartItems = document.getElementById('booking-cart-items');
+            const bookingForm = document.getElementById('booking-form');
+            const bookingModalTitle = document.getElementById('booking-modal-title');
+            const bookingServiceName = document.getElementById('booking-service-name');
+            
+            // Hide cart items and service selection
+            serviceGrid.style.display = 'none';
+            bookingCartItems.style.display = 'none';
+            
+            // Show booking form
+            bookingForm.style.display = 'block';
+            bookingModalTitle.textContent = 'Complete Booking';
+            currentBookingView = 'form';
+            
+            // Show back button when in form view
+            backButton.style.display = 'flex';
+            
+            // Populate service field with all selected services
+            const serviceNames = cart.map(item => `${item.name} (${item.price})`).join(', ');
+            bookingServiceName.value = serviceNames;
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('booking-modal');
+            const serviceGrid = document.getElementById('service-selection-grid');
+            const bookingForm = document.getElementById('booking-form');
+            const bookingModalTitle = document.getElementById('booking-modal-title');
+            const backButton = document.getElementById('booking-modal-back');
+            
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+            
+            // Reset to service selection for next time
+            serviceGrid.style.display = 'block';
+            bookingForm.style.display = 'none';
+            bookingModalTitle.textContent = 'Booking';
+            currentBookingView = 'selection';
+            
+            // Hide back button when resetting
+            backButton.style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('booking-modal');
+            if (e.target === modal) {
+                closeBookingModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeBookingModal();
+            }
+        });
+
+        // Booking Form Submission
+        function submitBooking(e) {
+            e.preventDefault();
+            
+            const service = document.getElementById('booking-service-name').value;
+            const name = document.getElementById('booking-name').value;
+            const phone = document.getElementById('booking-phone').value;
+            const email = document.getElementById('booking-email').value;
+            const date = document.getElementById('booking-date').value;
+            const time = document.getElementById('booking-time').value;
+            const notes = document.getElementById('booking-notes').value;
+            
+            // Format the booking message
+            const message = `📅 NEW BOOKING REQUEST\n\n` +
+                `Services: ${service}\n\n` +
+                `👤 Name: ${name}\n` +
+                `📞 Phone: ${phone}\n` +
+                `📧 Email: ${email}\n\n` +
+                `🗓️ Date: ${date}\n` +
+                `⏰ Time: ${time}\n\n` +
+                `📝 Notes: ${notes || 'None'}`;
+            
+            // Show notification
+            showNotification(`✓ Booking request sent! We'll contact you at ${phone} shortly.`);
+            
+            // Log details (in production, this would send to your backend)
+            console.log('Booking Details:', {
+                services: service,
+                name,
+                phone,
+                email,
+                date,
+                time,
+                notes
+            });
+            
+// Reset form and cart first
+            document.getElementById('booking-form').reset();
+            clearCart();
+            
+            // Close modal after showing notification
+            setTimeout(() => {
+                closeBookingModal();
+            }, 3000);
+        }
+
+        // Show notification
+        function showNotification(message) {
+            const notification = document.getElementById('booking-notification');
+            const notificationText = document.getElementById('notification-text');
+            
+            if (notification && notificationText) {
+                notificationText.textContent = message;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 5000);
+            } else {
+                alert(message);
+            }
+        }
+
+        // Update existing addToBooking function to also add to cart
+        const originalAddToBooking = addToBooking;
+        addToBooking = function(serviceName, price) {
+            addToCart(serviceName, price);
+        };
+
+        // Image Upload Function
+        let uploadedImages = [];
+
+        function handleImageUpload(event) {
+            const files = event.target.files;
+            const previewContainer = document.getElementById('image-preview-container');
+            
+            if (files.length > 0) {
+                // Check if adding these would exceed the limit of 3
+                if (uploadedImages.length + files.length > 3) {
+                    showNotification('Maximum 3 photos allowed');
+                    return;
+                }
+                
+                Array.from(files).forEach(file => {
+                    if (uploadedImages.length >= 3) {
+                        return;
+                    }
+                    
+                    // Validate file type
+                    if (!file.type.startsWith('image/')) {
+                        showNotification('Please upload image files only');
+                        return;
+                    }
+                    
+                    // Read and preview the image
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const imageData = e.target.result;
+                        uploadedImages.push(imageData);
+                        
+                        // Create preview element
+                        const previewDiv = document.createElement('div');
+                        previewDiv.className = 'image-preview';
+                        previewDiv.innerHTML = `
+                            <img src="${imageData}" alt="Inspiration photo">
+                            <button type="button" class="image-preview-remove" onclick="removeImage('${imageData}', this)">&times;</button>
+                        `;
+                        previewContainer.appendChild(previewDiv);
+                    };
+                    reader.readAsDataURL(file);
+                });
+                
+                // Show notification
+                if (files.length > 0) {
+                    showNotification(`${files.length} photo(s) uploaded`);
+                }
+            }
+            
+            // Clear the input so same file can be selected again
+            event.target.value = '';
+        }
+
+        function removeImage(imageData, button) {
+            // Remove from array
+            uploadedImages = uploadedImages.filter(img => img !== imageData);
+            
+            // Remove from DOM
+            const previewDiv = button.parentElement;
+            previewDiv.remove();
+            
+showNotification('Photo removed');
+        }
+        
+        // ===== OVERRIDE SUBMIT BOOKING TO SAVE TO DATABASE =====
+        // Override the submitBooking function to save bookings to shared database
+        const originalSubmitBooking = submitBooking;
+        submitBooking = function(e) {
+            // Get form values
+            const service = document.getElementById('booking-service-name').value;
+            const name = document.getElementById('booking-name').value;
+            const phone = document.getElementById('booking-phone').value;
+            const email = document.getElementById('booking-email').value;
+            const date = document.getElementById('booking-date').value;
+            const time = document.getElementById('booking-time').value;
+            const notes = document.getElementById('booking-notes').value;
+            
+            // Save to shared database before calling original function
+            saveBookingToSharedDB({
+                name: name,
+                phone: phone,
+                email: email,
+                service: service,
+                date: date,
+                time: time,
+                notes: notes
+            });
+            
+            // Call original function to handle the rest
+            if (originalSubmitBooking) {
+                originalSubmitBooking(e);
+            }
+        };
+        
+        // Also override submitContact to save messages
+        const originalSubmitContact = submitContact;
+        submitContact = function(e) {
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const message = document.getElementById('contact-message').value;
+            
+            // Save to shared database
+            saveMessageToSharedDB({
+                name: name,
+                email: email,
+                message: message
+            });
+            
+            // Call original function
+            if (originalSubmitContact) {
+                originalSubmitContact(e);
+            }
+        };
+    </script>
+</body>
+</html>
+
